@@ -1,8 +1,7 @@
-ARG BUILD_FROM
-FROM ${BUILD_FROM}
+FROM ghcr.io/home-assistant/amd64-base:latest
 
-# Install Python
-RUN apk add --no-cache python3 py3-pip py3-venv
+# Basis Python (in dit base-image is Python al aanwezig, we installeren alleen pip/venv tools indien nodig)
+RUN apk add --no-cache py3-pip
 
 WORKDIR /usr/src/app
 

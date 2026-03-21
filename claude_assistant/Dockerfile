@@ -1,7 +1,7 @@
-FROM ghcr.io/home-assistant/amd64-base:latest
+ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:latest
+FROM ${BUILD_FROM}
 
-# Basis Python (in dit base-image is Python al aanwezig, we installeren alleen pip/venv tools indien nodig)
-RUN apk add --no-cache py3-pip
+# S6 overlay & bashio zijn al aanwezig in het base image
 
 WORKDIR /usr/src/app
 
@@ -12,10 +12,11 @@ RUN python3 -m venv venv && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
-# App code
+# App code en run script
 COPY app.py tools.py config.py run.sh ./
 RUN chmod +x run.sh
 
 EXPOSE 8001
 
-CMD ["/usr/src/app/run.sh"]
+# Laat s6 de service starten via run.sh
+CMD ["/usr/bin/with-contenv", "/usr/src/app/run.sh"]

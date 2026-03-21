@@ -1,6 +1,9 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:latest
 FROM ${BUILD_FROM}
 
+# Installeer Python en pip
+RUN apk add --no-cache python3 py3-pip
+
 WORKDIR /usr/src/app
 
 # Python dependencies

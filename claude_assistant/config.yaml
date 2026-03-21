@@ -4,8 +4,6 @@ slug: claude_assistant
 description: "Claude personal assistant integrated with Home Assistant"
 arch:
   - amd64
-build_from:
-  amd64: "ghcr.io/home-assistant/amd64-base:latest"
 startup: application
 boot: auto
 host_network: true

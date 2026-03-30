@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bashio
 echo "RUN.SH STARTED" >&2
 
 export ANTHROPIC_API_KEY=$(bashio::config 'anthropic_api_key')

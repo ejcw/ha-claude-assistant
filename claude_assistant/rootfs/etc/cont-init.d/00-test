@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/bin/sh
 echo "CONT-INIT TEST RAN" >&2
 mkdir -p /tmp/claude_test
 echo "hello" > /tmp/claude_test/test.txt

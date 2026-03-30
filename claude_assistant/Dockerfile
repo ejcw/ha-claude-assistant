@@ -1,4 +1,4 @@
 FROM ghcr.io/home-assistant/amd64-base:latest
 
-COPY run.sh /run.sh
-RUN chmod a+x /run.sh
+COPY rootfs /
+RUN chmod +x /etc/s6-overlay/s6-rc.d/claude/run

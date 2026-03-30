@@ -2,8 +2,12 @@ FROM ghcr.io/home-assistant/amd64-base:latest
 
 RUN apk add --no-cache python3 py3-pip
 
-COPY rootfs /
-RUN chmod +x /etc/cont-init.d/00-test
-RUN chmod +x /etc/services.d/claude/run
+WORKDIR /usr/src/app
 
-EXPOSE 8001
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY app.py tools.py config.py run.sh ./
+RUN chmod +x /usr/src/app/run.sh
+
+CMD ["/usr/src/app/run.sh"]

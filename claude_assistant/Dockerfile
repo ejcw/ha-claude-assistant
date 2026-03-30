@@ -6,5 +6,6 @@ WORKDIR /usr/src/app
 
 COPY rootfs /
 RUN chmod +x /etc/services.d/claude/run
+RUN chmod +x /etc/cont-init.d/00-test
 
 EXPOSE 8001

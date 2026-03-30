@@ -7,7 +7,8 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY app.py tools.py config.py run.sh ./
-RUN chmod +x /usr/src/app/run.sh
+COPY app.py tools.py config.py /usr/src/app/
+COPY run.sh /run.sh
+RUN chmod a+x /run.sh
 
-CMD ["/usr/src/app/run.sh"]
+EXPOSE 8001

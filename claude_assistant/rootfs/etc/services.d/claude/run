@@ -1,3 +1,0 @@
-#!/bin/sh
-echo "CLAUDE SERVICE TEST STARTED" >&2
-exec python3 -m http.server 8001
